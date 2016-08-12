@@ -33,13 +33,13 @@ app.controller('LoginController', function($scope, AuthService, Session, $rootSc
     };
 
     // Show create app page and hide other stuff
-    $scope.createAppViewIsVisible = false;
-    $scope.toggleCreateAppView = function() {
-        $scope.createAppViewIsVisible = !$scope.createAppViewIsVisible;
+    $scope.createFormViewIsVisible = false;
+    $scope.toggleCreateFormView = function() {
+        $scope.createFormViewIsVisible = !$scope.createFormViewIsVisible;
     };
 
-    $scope.resetCreateAppView = function() {
-        $scope.createAppViewIsVisible = false;
+    $scope.resetCreateFormView = function() {
+        $scope.createFormViewIsVisible = false;
     };
 
     if (angular.isUndefined($cookieStore.get('loggedNb'))) {
