@@ -19,7 +19,7 @@ require({
     paths: {
         jquery: 'libs/jquery/jquery.min',
         jquery_ui: 'libs/jquery/jquery-ui.min',
-        ngclipboard: '../bower_components/ngclipboard/dist/ngclipboard.min',
+        angularclipboard: '../bower_components/angular-clipboard/angular-clipboard',
         bootstrapJS: "../bower_components/bootstrap/dist/js/bootstrap.min",
         metisMenu: "../bower_components/metisMenu/dist/metisMenu.min",
         sb_admin_2: "../dist/js/sb-admin-2",
@@ -88,7 +88,7 @@ require({
         app: {
             deps: ['angular', 'angular_route', 'angular_sanitize', 'ui_bootstrap']
         },
-        ngclipboard: {
+        angularclipboard: {
             deps: ['angular']
         },
         angular_route: {
@@ -133,7 +133,7 @@ require({
     'projectController',
     'userController',
     'applicationController',
-    'ngclipboard'
+    'angularclipboard'
 ], function(require) {
     return require(['bootstrap', 'vis']);
 });

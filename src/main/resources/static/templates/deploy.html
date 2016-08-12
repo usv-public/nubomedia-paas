@@ -13,16 +13,21 @@
         type="text"
         class="form-control input__field"
         id="clipboard-input"
-        value="{{application.gitURL}}">
+        ng-model="application.gitURL"
+        value="{{application.gitURL}}"
+        readonly>
       <span
-        type="button"
-        ngclipboard
-        data-clipboard-target="#clipboard-input"
-        class="btn form-deploy__copy">
+        class="btn form-deploy__copy"
+        title="Copied!"
+        supported="supported"
+        on-copied="success()"
+        text="application.gitURL"
+        on-error="fail(err)"
+        clipboard
+        alt="Copy to clipboard">
           Copy
       </span>
     </div><!-- /Application name -->
-
 
     <button class="btn btn-primary form__submit">
       Deploy

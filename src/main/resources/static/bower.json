@@ -37,6 +37,7 @@
     "datatables-responsive": "~1.0.3",
     "bootstrap-social": "~4.8.0",
     "flot.tooltip": "~0.8.4",
-    "ngclipboard": "^1.1.1"
+    "ngclipboard": "^1.1.1",
+    "angular-clipboard": "^1.4.2"
   }
 }
