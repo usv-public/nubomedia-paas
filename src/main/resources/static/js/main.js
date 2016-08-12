@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2015-2016 Fraunhofer FOKUS
  *
@@ -21,6 +19,7 @@ require({
     paths: {
         jquery: 'libs/jquery/jquery.min',
         jquery_ui: 'libs/jquery/jquery-ui.min',
+        ngclipboard: '../bower_components/ngclipboard/dist/ngclipboard.min',
         bootstrapJS: "../bower_components/bootstrap/dist/js/bootstrap.min",
         metisMenu: "../bower_components/metisMenu/dist/metisMenu.min",
         sb_admin_2: "../dist/js/sb-admin-2",
@@ -74,10 +73,10 @@ require({
             deps: ['app']
         },
         projectController: {
-            deps: ['app', 'servicesServices', 'httpService', 'angular_cookies','authService']
+            deps: ['app', 'servicesServices', 'httpService', 'angular_cookies', 'authService']
         },
         userController: {
-            deps: ['app', 'servicesServices', 'httpService', 'angular_cookies','authService']
+            deps: ['app', 'servicesServices', 'httpService', 'angular_cookies', 'authService']
         },
         underscore: {
             exports: '_',
@@ -88,6 +87,9 @@ require({
         },
         app: {
             deps: ['angular', 'angular_route', 'angular_sanitize', 'ui_bootstrap']
+        },
+        ngclipboard: {
+            deps: ['angular']
         },
         angular_route: {
             deps: ['angular']
@@ -130,7 +132,8 @@ require({
     'indexController',
     'projectController',
     'userController',
-    'applicationController'
+    'applicationController',
+    'ngclipboard'
 ], function(require) {
-    return require(['bootstrap','vis']);
+    return require(['bootstrap', 'vis']);
 });

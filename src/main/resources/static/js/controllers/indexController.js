@@ -21,7 +21,7 @@ var app = angular.module('app');
  * Manages the login page
  *
  */
-app.controller('LoginController', function ($scope, AuthService, Session, $rootScope, $location, $cookieStore, $http) {
+app.controller('LoginController', function($scope, AuthService, Session, $rootScope, $location, $cookieStore, $http) {
     $scope.currentUser = null;
     //$scope.URL = 'http://localhost:8081';
     //$scope.URL= 'http://80.96.122.73:8081';
@@ -32,18 +32,26 @@ app.controller('LoginController', function ($scope, AuthService, Session, $rootS
         "grant_type": "password"
     };
 
+    // Show create app page and hide other stuff
+    $scope.createAppViewIsVisible = false;
+    $scope.toggleCreateAppView = function() {
+        $scope.createAppViewIsVisible = !$scope.createAppViewIsVisible;
+    };
+
+    $scope.resetCreateAppView = function() {
+        $scope.createAppViewIsVisible = false;
+    };
+
     if (angular.isUndefined($cookieStore.get('loggedNb'))) {
         $scope.logged = false;
         $rootScope.logged = false;
-    }
-
-    else if ($cookieStore.get('loggedNb')) {
+    } else if ($cookieStore.get('loggedNb')) {
         $scope.logged = $cookieStore.get('loggedNb');
         $rootScope.logged = $cookieStore.get('loggedNb');
     }
     $location.replace();
     console.log($scope.logged);
-    $scope.loggedF = function () {
+    $scope.loggedF = function() {
         return $scope.logged;
     };
 
@@ -71,13 +79,13 @@ app.controller('LoginController', function ($scope, AuthService, Session, $rootS
      * @param {type} credential
      * @returns {undefined}
      */
-    $scope.login = function (credential) {
+    $scope.login = function(credential) {
         AuthService.login(credential, $scope.URL);
         setTimeout(showLoginError, 2000);
     };
 
     function showLoginError() {
-        $scope.$apply(function () {
+        $scope.$apply(function() {
             $scope.loginError = angular.isUndefined($cookieStore.get('loggedNb'));
             console.log($scope.loginError);
         });
@@ -85,7 +93,7 @@ app.controller('LoginController', function ($scope, AuthService, Session, $rootS
 });
 
 
-app.controller('IndexCtrl', function ($scope, $cookieStore, $location, AuthService, http, $rootScope, $window) {
+app.controller('IndexCtrl', function($scope, $cookieStore, $location, AuthService, http, $rootScope, $window) {
     $('#side-menu').metisMenu();
 
     var url = $cookieStore.get('URLNb') + "/api/v1";
@@ -93,7 +101,7 @@ app.controller('IndexCtrl', function ($scope, $cookieStore, $location, AuthServi
     console.log($scope.logged);
     $location.replace();
 
-    $scope.$watch('projectSelected', function (newValue, oldValue) {
+    $scope.$watch('projectSelected', function(newValue, oldValue) {
         console.log(newValue);
         if (!angular.isUndefined(newValue) && !angular.isUndefined(oldValue)) {
             $cookieStore.put('projectNb', newValue);
@@ -108,7 +116,7 @@ app.controller('IndexCtrl', function ($scope, $cookieStore, $location, AuthServi
      * Checks if the user is logged
      * @returns {unresolved}
      */
-    $scope.loggedF = function () {
+    $scope.loggedF = function() {
         return $scope.logged;
     };
 
@@ -124,7 +132,7 @@ app.controller('IndexCtrl', function ($scope, $cookieStore, $location, AuthServi
      * Delete the session of the user
      * @returns {undefined}
      */
-    $scope.logout = function () {
+    $scope.logout = function() {
         AuthService.logout();
     };
 
@@ -134,17 +142,17 @@ app.controller('IndexCtrl', function ($scope, $cookieStore, $location, AuthServi
     $scope.numberService = 0;
 
     function loadNumbers() {
-        http.get(url + '/nubomedia/paas/app/').success(function (data) {
+        http.get(url + '/nubomedia/paas/app/').success(function(data) {
             console.log(data);
             $scope.numberApp = data.length;
 
         });
     }
 
-    $scope.changeProject = function (project) {
+    $scope.changeProject = function(project) {
         if (arguments.length === 0) {
             http.syncGet(url + '/projects/')
-                .then(function (response) {
+                .then(function(response) {
                     if (angular.isUndefined($cookieStore.get('projectNb')) || $cookieStore.get('projectNb').id === '') {
                         $rootScope.projectSelected = response[0];
                         $cookieStore.put('projectNb', response[0])
@@ -153,8 +161,7 @@ app.controller('IndexCtrl', function ($scope, $cookieStore, $location, AuthServi
                     }
                     $rootScope.projects = response;
                 });
-        }
-        else {
+        } else {
             $rootScope.projectSelected = project;
             console.log(project);
             $cookieStore.put('projectNb', project);
@@ -167,12 +174,9 @@ app.controller('IndexCtrl', function ($scope, $cookieStore, $location, AuthServi
 
     // Active menu link
 
-    $(document).on('click', '.js-menu-link', function(){
+    $(document).on('click', '.js-menu-link', function() {
         $('.js-menu-link').removeClass('is-active');
         $(this).addClass('is-active');
     });
 
 });
-
-
-
