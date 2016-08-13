@@ -3,6 +3,8 @@
 // --------------------------------------------------------------------------
 .form
   padding: 20px 0
+  margin-top: 15px
+  margin-bottom: 15px
 
   .panel
     border-radius: 0
@@ -27,6 +29,7 @@
 
   &__section
     margin-bottom: 55px
+    +clearfix
 
   &__section-title
     font-size: 15px
@@ -40,6 +43,7 @@
     font-size: 18px
     min-width: 148px
     padding: 10px 20px
+    margin-top: 20px
 
   ::-webkit-input-placeholder
     color: $color-gray + 50
@@ -56,6 +60,11 @@
   -moz-placeholder:
     color: $color-gray + 50
     font-weight: 300
+
+  .form-control[readonly]
+    background-color: inherit
+    cursor: default
+
 
 @media screen and (max-width: 991px)
   .form-horizontal .control-label
