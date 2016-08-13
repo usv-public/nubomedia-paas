@@ -161,7 +161,7 @@
 
             <div class="c-application__component">
               <h3 class="c-application__title">
-                <span class="c-application__icon glyphicon glyphicon-signal"></span> Flavour
+                <span class="c-application__icon flavour"></span> Flavour
                 <span class="c-application__subtitle">
                   {{data.flavor}}
                 </span>
@@ -170,8 +170,8 @@
 
             <div class="c-application__component">
               <h3 class="c-application__title">
-                <span class="c-application__icon glyphicon glyphicon-cog"></span> Status
-                <span class="c-application__subtitle">
+                <span class="c-application__icon" ng-class="data.status"></span> Status
+                <span class="c-application__subtitle c-application__status" ng-class="data.status">
                   {{data.status}}
                 </span>
               </h3>
@@ -191,8 +191,10 @@
                   Actions
                 </button>
 
-                <ul
-                  class="dropdown-menu c-dropdown__menu">
+                <ul class="dropdown-menu c-dropdown__menu">
+                  <li class="c-dropdown__item">
+                    <a href="#applications/{{data.id}}">View</a>
+                  </li>
                   <li class="c-dropdown__item">
                     <span class="text-danger" ng-click="deleteData(data.id)">Delete</span>
                   </li>
@@ -620,7 +622,7 @@
                   ng-change="changeCdn()">
                 <div class="control__indicator"></div>
                 <div class="addon__content">
-                  <span class="addon__image"></span>
+                  <span class="addon__image cdn"></span>
                   <p class="addon__title">CDN Connector</p>
                 </div>
               </label>
@@ -636,7 +638,7 @@
                   ng-disabled="appCreate.cdnConnector">
                 <div class="control__indicator"></div>
                 <div class="addon__content">
-                  <span class="addon__image"></span>
+                  <span class="addon__image cloud"></span>
                   <p class="addon__title">Cloud Repository</p>
                 </div>
               </label>
