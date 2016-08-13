@@ -153,17 +153,17 @@
               <span class="c-application__image"></span>
 
               <h3 class="c-application__title">
-                <a href="#marketapps/{{data.id}}" ng-click="setApp(data)">{{data.name}}</a>
+                <a href="#applications/{{data.id}}">{{data.name}}</a>
                 <span class="c-application__subtitle">
-                  Created at:
-                  <strong class="c-application__desc">{{data.createdAt}}</strong>
+                  Description:
+                  <strong class="c-application__desc">{{data.description}}</strong>
                 </span>
               </h3>
             </div><!-- /application component -->
 
             <div class="c-application__component">
               <h3 class="c-application__title">
-                <span class="c-application__icon glyphicon glyphicon-signal"></span> Flavour
+                <span class="c-application__icon flavour"></span> Flavour
                 <span class="c-application__subtitle">
                   {{data.flavor}}
                 </span>
@@ -172,8 +172,8 @@
 
             <div class="c-application__component">
               <h3 class="c-application__title">
-                <span class="c-application__icon glyphicon glyphicon-cog"></span> Status
-                <span class="c-application__subtitle">
+                <span class="c-application__icon" ng-class="data.status"></span> Status
+                <span class="c-application__subtitle c-application__status" ng-class="data.status">
                   {{data.status}}
                 </span>
               </h3>
@@ -193,19 +193,12 @@
                   Actions
                 </button>
 
-                <ul
-                  class="dropdown-menu c-dropdown__menu">
+                <ul class="dropdown-menu c-dropdown__menu">
                   <li class="c-dropdown__item">
-                    <span ng-click="launch(data.id)">
-                      Lunch
-                    </span>
+                    <a href="#applications/{{data.id}}">View</a>
                   </li>
                   <li class="c-dropdown__item">
-                    <span
-                      class="text-danger"
-                      ng-click="deleteAppMarket(data.id)">
-                      Delete
-                    </span>
+                    <span class="text-danger" ng-click="deleteData(data.id)">Delete</span>
                   </li>
                 </ul>
 
